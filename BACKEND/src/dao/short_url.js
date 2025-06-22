@@ -1,4 +1,4 @@
-import urlSchema from '../models/short_url.model.js';
+import urlSchema from "../models/short_url.model.js";
 
 export const saveShortUrl = async (shortUrl, longUrl, userId) => {
   const newUrl = new urlSchema({
@@ -10,5 +10,4 @@ export const saveShortUrl = async (shortUrl, longUrl, userId) => {
   }
   await newUrl.save();
   return newUrl;
-
 };

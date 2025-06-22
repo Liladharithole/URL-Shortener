@@ -12,19 +12,23 @@ conectDb();
 import urlSchema from "./src/models/short_url.model.js";
 // Importing the routes
 import short_url from "./src/routes/short_url.route.js";
-import { url } from "inspector";
+import authRoutes from "./src/routes/auth.routes.js";
 // import { errorHandler } from "./src/utils/errorHandler.js";
 // import Cors
 import cors from "cors";
 
 // Middleware to parse JSON bodies
-app.use(express.json());
+app.use(express.json()); 
 // Middleware to parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 //
 app.use("/api/create", short_url);
+// auth routes
+
+app.use("/api/auth", authRoutes);
+
 
 // Endpoint to redirect to the original URL
 app.get("/:id", redirectFromShortUrl);
